@@ -175,12 +175,14 @@ jobs:
             aws ec2 describe-instances \
               --query 'Reservations[*].Instances[*].PublicIpAddress' \
               --filters "Name=tag:project,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
-              --output text >> inventory.txt
+              --output text >> ip_address.txt
+            cat ip_address.txt >> inventory.txt
             cat inventory.txt
       - persist_to_workspace:
           root: .
           paths:
             - .circleci/ansible/inventory.txt
+            - .circleci/ansible/ip_address.txt
       - destroy_environment:
           id: ${CIRCLE_WORKFLOW_ID:0:7}
           when: on_fail
@@ -362,7 +364,7 @@ jobs:
       - run:
           name: Backend smoke test.
           command: |
-            export BACKEND_IP=$(cat ./.circleci/ansible/inventory.txt)
+            export BACKEND_IP=$(cat ./.circleci/ansible/ip_address.txt)
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
