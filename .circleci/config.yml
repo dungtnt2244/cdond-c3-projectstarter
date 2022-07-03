@@ -391,12 +391,8 @@ jobs:
             export OldWorkflowID=$(aws cloudformation \
             list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
             --no-paginate --output text)
+            curl http://kvdb.io/Q5zcVvhKjbfEjeFNsPESWy/values/oldWorkflowId -d '${OldWorkflowID}'
             echo OldWorkflowID: "${OldWorkflowID}"
-            echo "${OldWorkflowID}" > old_workflow_id.txt
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .circleci/ansible/old_workflow_id.txt
       - run:
           name: Update cloudfront distribution
           command: |
@@ -417,7 +413,7 @@ jobs:
       - run:
           name: Get old stack workflow id
           command: |
-            export OldWorkflowID=$(cat ./.circleci/ansible/old_workflow_id.txt)
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/Q5zcVvhKjbfEjeFNsPESWy/values/oldWorkflowId)
             echo OLD_WORKFLOW_ID= "${OldWorkflowID}"
             echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
