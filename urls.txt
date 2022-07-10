@@ -1,2 +1,5 @@
 1. https://github.com/dungtnt2244/cdond-c3-projectstarter
-2. 
+2. http://udapeople-077f58d.s3-website-us-east-1.amazonaws.com/#/employees
+3. https://d2kjolcc8mof.cloudfront.net/#/employees
+4. 
+5. http://ec2-3-86-187-145.compute-1.amazonaws.com:9090/new/targets
