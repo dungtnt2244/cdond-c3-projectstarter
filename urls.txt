@@ -1,5 +1,5 @@
 1. https://github.com/dungtnt2244/cdond-c3-projectstarter
-2. http://udapeople-ef6122c.s3-website-us-east-1.amazonaws.com
-3. https://d2kjolcc8mof.cloudfront.net/#/employees
-4. http://ec2-44-204-46-139.compute-1.amazonaws.com:3030/api/status
-5. http://ec2-34-238-155-231.compute-1.amazonaws.com:9090/targets
+2. http://udapeople-34b91aa.s3-website-us-east-1.amazonaws.com/#/employees
+3. http://d2kjolcc8mof.cloudfront.net/#/employees
+4. http://ec2-54-167-101-53.compute-1.amazonaws.com:3030/api/status
+5. http://ec2-3-88-208-146.compute-1.amazonaws.com:9090/targets
